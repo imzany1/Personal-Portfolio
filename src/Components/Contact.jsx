@@ -140,10 +140,10 @@ const Contact = () => {
     setStatus('Sending...');
 
     emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,      // Find this in your EmailJS account under "Email Services"
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,     // Find this in your EmailJS account under "Email Templates"
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,    
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,   
         form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY       // Find this in your EmailJS account settings
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY   
       )
       .then((result) => {
           console.log(result.text);
