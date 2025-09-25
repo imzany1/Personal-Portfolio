@@ -140,10 +140,10 @@ const Contact = () => {
     setStatus('Sending...');
 
     emailjs.sendForm(
-        'service_6hw4dd1',      // Find this in your EmailJS account under "Email Services"
-        'template_dghryud',     // Find this in your EmailJS account under "Email Templates"
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,      // Find this in your EmailJS account under "Email Services"
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,     // Find this in your EmailJS account under "Email Templates"
         form.current,
-        'AQmjY21YZNDKRhweF'       // Find this in your EmailJS account settings
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY       // Find this in your EmailJS account settings
       )
       .then((result) => {
           console.log(result.text);
