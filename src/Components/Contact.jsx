@@ -126,6 +126,9 @@ const LocationIcon = () => (
     </svg>
 );
 
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
 const Contact = () => {
   const form = useRef();
@@ -140,10 +143,10 @@ const Contact = () => {
     setStatus('Sending...');
 
     emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,    
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,   
+        serviceId,    
+        templateId,   
         form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY   
+        publicKey   
       )
       .then((result) => {
           console.log(result.text);
