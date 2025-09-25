@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import ochiImage from '/public/OCHI.png';
-
+import codeReviewerImage from '/public/CodeReviewer.png';
 // --- SVG Icons ---
 const GitHubIcon = () => (
   <svg height="24" width="24" viewBox="0 0 16 16" fill="currentColor">
@@ -29,12 +29,12 @@ const projectsData = [
     githubUrl: "https://github.com/imzany1/Ochi",
   },
   {
-    title: "Social Media Dashboard",
-    description: "A responsive dashboard for managing social media accounts, featuring data visualization with Chart.js and a modern UI.",
-    tech: ["React", "Express", "Chart.js", "API", "CSS3"],
-    image: "https://placehold.co/600x400/1a202c/4ade80?text=Social+Media",
-    liveUrl: "#",
-    githubUrl: "#",
+    title: "Online Code Reviewer",
+    description: "A web application that allows users to submit code snippets for review, providing feedback and suggestions using a combination of React,Express,Node and Gemini API for code improvement.",
+    tech: ["React", "Express", "Node","CSS3" ,"GeminiAPI",],
+    image: codeReviewerImage,
+    liveUrl: "https://code-reviewer-1-8afe.onrender.com/",
+    githubUrl: "https://github.com/imzany1/Code-reviewer",
   },
   {
     title: "Real-Time Chat App",
