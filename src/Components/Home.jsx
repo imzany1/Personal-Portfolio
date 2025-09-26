@@ -138,7 +138,7 @@ const ParticleBackground = () => {
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white px-5 relative overflow-hidden">
+    <div id="home" className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white px-5 relative overflow-hidden">
       {/* Particle Background */}
       <ParticleBackground />
       
