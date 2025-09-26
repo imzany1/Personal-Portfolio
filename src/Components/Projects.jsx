@@ -62,6 +62,7 @@ const ProjectCard = ({ project, index }) => {
     <div
       ref={ref}
       style={animationDelay}
+      id="projects"
       className={`fade-in-up ${
         inView ? "is-visible" : ""
       } bg-gray-800/50 border border-white/10 rounded-lg overflow-hidden group transition-all duration-300 hover:border-green-400/60 hover:shadow-2xl hover:shadow-green-500/10 flex flex-col`}>
