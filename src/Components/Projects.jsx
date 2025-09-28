@@ -1,7 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import ochiImage from "/public/OCHI.jpg";
-import codeReviewerImage from "/public/CodeReviewer.jpg";
+import ochiImage from "/public/OCHI.webp";
+import codeReviewerImage from "/public/CodeReviewer.webp";
 
 // --- SVG Icons ---
 const GitHubIcon = () => (
