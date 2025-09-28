@@ -91,6 +91,7 @@ const ProjectCard = ({ project, index }) => {
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View the live project"
             className="flex items-center gap-2 text-white hover:text-green-400 transition-colors duration-300">
             <ExternalLinkIcon />
             <span>Live Demo</span>
@@ -99,6 +100,7 @@ const ProjectCard = ({ project, index }) => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View the project on GitHub"
             className="flex items-center gap-2 text-white hover:text-green-400 transition-colors duration-300">
             <GitHubIcon />
             <span>GitHub</span>
