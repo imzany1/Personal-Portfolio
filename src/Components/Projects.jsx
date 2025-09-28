@@ -1,7 +1,7 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
-import ochiImage from "/public/OCHI.png";
-import codeReviewerImage from "/public/CodeReviewer.png";
+import ochiImage from "/public/OCHI.jpg";
+import codeReviewerImage from "/public/CodeReviewer.jpg";
 
 // --- SVG Icons ---
 const GitHubIcon = () => (
@@ -70,6 +70,7 @@ const ProjectCard = ({ project, index }) => {
         <img
           src={project.image}
           alt={project.title}
+          loading="lazy"
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </div>
