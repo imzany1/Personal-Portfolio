@@ -5,6 +5,10 @@ import { useInView } from "react-intersection-observer";
 // --- Optimized Particle Background Component ---
 const ParticleBackground = () => {
   const canvasRef = useRef(null);
+  const isMobile = window.innerWidth < 768; // Check for mobile screen
+  
+  // Return null if on mobile to disable the component
+  if (isMobile) return null;
   const mouseRef = useRef({ x: 0, y: 0 });
   const animationRef = useRef(null);
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
