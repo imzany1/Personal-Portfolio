@@ -138,7 +138,7 @@ const ParticleBackground = () => {
 
     // Optimized animation loop with frame skipping on mobile
     let frameCount = 0;
-    const isMobile = window.innerWidth < 768;
+    // const isMobile = window.innerWidth < 768;
     const frameSkip = isMobile ? 2 : 1; // Skip every other frame on mobile
 
     const animate = () => {
