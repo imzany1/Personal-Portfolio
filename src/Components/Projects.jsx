@@ -1,5 +1,6 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
+import { useTheme } from "../context/ThemeContext";
 import ochiImage from "/public/OCHI.webp";
 import codeReviewerImage from "/public/CodeReviewer.webp";
 
@@ -50,7 +51,7 @@ const projectsData = [
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, index, isDark }) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -63,9 +64,7 @@ const ProjectCard = ({ project, index }) => {
       ref={ref}
       style={animationDelay}
       id="projects"
-      className={`fade-in-up ${
-        inView ? "is-visible" : ""
-      } bg-gray-800/50 border border-white/10 rounded-lg overflow-hidden group transition-all duration-300 hover:border-green-400/60 hover:shadow-2xl hover:shadow-green-500/10 flex flex-col`}>
+      className={`fade-in-up ${inView ? "is-visible" : ""} ${isDark ? 'bg-gray-800/50 border-white/10' : 'bg-white border-gray-200 shadow-lg'} border rounded-lg overflow-hidden group transition-all duration-300 hover:border-green-400/60 hover:shadow-2xl hover:shadow-green-500/10 flex flex-col`}>
       <div className="overflow-hidden">
         <img
           src={project.image}
@@ -75,8 +74,8 @@ const ProjectCard = ({ project, index }) => {
         />
       </div>
       <div className="p-6 flex flex-col flex-grow">
-        <h3 className="text-2xl font-bold mb-2 text-white">{project.title}</h3>
-        <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
+        <h3 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{project.title}</h3>
+        <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4 flex-grow`}>{project.description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.map((t) => (
             <span
@@ -92,7 +91,7 @@ const ProjectCard = ({ project, index }) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View the live project"
-            className="flex items-center gap-2 text-white hover:text-green-400 transition-colors duration-300">
+            className={`flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-700'} hover:text-green-500 transition-colors duration-300`}>
             <ExternalLinkIcon />
             <span>Live Demo</span>
           </a>
@@ -101,7 +100,7 @@ const ProjectCard = ({ project, index }) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="View the project on GitHub"
-            className="flex items-center gap-2 text-white hover:text-green-400 transition-colors duration-300">
+            className={`flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-700'} hover:text-green-500 transition-colors duration-300`}>
             <GitHubIcon />
             <span>GitHub</span>
           </a>
@@ -112,18 +111,20 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
+  const { isDark } = useTheme();
+  
   return (
     <section
       id="projects"
-      className="py-20 bg-gray-900 text-white overflow-hidden">
+      className={`py-20 ${isDark ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} overflow-hidden transition-colors duration-300`}>
       <div className="container mx-auto px-4 md:px-20">
         <h2 className="text-4xl font-bold text-center mb-12">
-          Featured <span className="text-green-400">Projects</span>
+          Featured <span className="text-green-500">Projects</span>
         </h2>
         {/* UPDATED GRID: This now centers the two cards perfectly on large screens */}
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
           {projectsData.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
+            <ProjectCard key={index} project={project} index={index} isDark={isDark} />
           ))}
         </div>
       </div>

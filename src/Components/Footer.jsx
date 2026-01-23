@@ -1,4 +1,5 @@
 import React from "react";
+import { useTheme } from "../context/ThemeContext";
 
 // --- SVG Icons for Social Links ---
 const GitHubIcon = () => (
@@ -34,8 +35,10 @@ const InstagramIcon = () => (
 );
 
 const Footer = () => {
+  const { isDark } = useTheme();
+  
   return (
-    <footer className="bg-gray-900 text-gray-400 py-6">
+    <footer className={`${isDark ? 'bg-gray-900 text-gray-400' : 'bg-gray-100 text-gray-600'} py-6 transition-colors duration-300`}>
       <div className="container mx-auto px-4 md:px-20 flex flex-col md:flex-row justify-between items-center">
         <div className="text-center md:text-left mb-4 md:mb-0">
           <p>Made by Hussain Abbas in {new Date().getFullYear()}.</p>
@@ -45,7 +48,7 @@ const Footer = () => {
             href="https://github.com/imzany1"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors duration-300"
+            className={`${isDark ? 'hover:text-white' : 'hover:text-gray-900'} transition-colors duration-300`}
           >
             <GitHubIcon />
           </a>
@@ -53,7 +56,7 @@ const Footer = () => {
             href="https://www.linkedin.com/in/hussain-abbas-3ab383220/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors duration-300"
+            className={`${isDark ? 'hover:text-white' : 'hover:text-gray-900'} transition-colors duration-300`}
           >
             <LinkedInIcon />
           </a>
@@ -61,7 +64,7 @@ const Footer = () => {
             href="https://www.instagram.com/im_zany1"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors duration-300"
+            className={`${isDark ? 'hover:text-white' : 'hover:text-gray-900'} transition-colors duration-300`}
           >
             <InstagramIcon />
           </a>
