@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useInView } from "react-intersection-observer";
+import { useTheme } from "../context/ThemeContext";
 
 // --- Optimized Particle Background Component ---
 const ParticleBackground = () => {
@@ -203,6 +204,7 @@ const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 
 const Contact = () => {
+  const { isDark } = useTheme();
   const form = useRef();
   const [status, setStatus] = useState("Send Message");
 
@@ -237,11 +239,11 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
+      className={`relative py-20 ${isDark ? 'bg-gradient-to-br from-gray-900 to-gray-800 text-white' : 'bg-gradient-to-br from-gray-100 to-white text-gray-900'} overflow-hidden transition-colors duration-300`}>
       <ParticleBackground />
       <div className="relative z-10 container mx-auto px-4 md:px-20">
         <h2 className="text-4xl font-bold text-center mb-12">
-          Get In <span className="text-green-400">Touch</span>
+          Get In <span className="text-green-500">Touch</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -252,32 +254,32 @@ const Contact = () => {
               infoInView ? "is-visible" : ""
             }`}>
             <h3 className="text-2xl font-bold">Let's Connect!</h3>
-            <p className="text-gray-400 text-lg">
+            <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-lg`}>
               Have a project in mind or just want to say hello? My inbox is
               always open. Whether you have a question or just want to connect,
               feel free to reach out.
             </p>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
-                <div className="bg-green-900/50 p-3 rounded-full">
+                <div className="bg-green-600/30 p-3 rounded-full">
                   <MailIcon />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg">Email</h4>
                   <a
                     href="mailto:hussainabbas7492@gmail.com"
-                    className="text-gray-300 hover:text-green-400 transition-colors">
+                    className={`${isDark ? 'text-gray-300 hover:text-green-400' : 'text-gray-600 hover:text-green-600'} transition-colors`}>
                     hussainabbas7492@gmail.com
                   </a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <div className="bg-green-900/50 p-3 rounded-full">
+                <div className="bg-green-600/30 p-3 rounded-full">
                   <LocationIcon />
                 </div>
                 <div>
                   <h4 className="font-bold text-lg">Location</h4>
-                  <p className="text-gray-300">Lucknow, India</p>
+                  <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>Lucknow, India</p>
                 </div>
               </div>
             </div>
@@ -287,7 +289,7 @@ const Contact = () => {
           <form
             ref={form}
             onSubmit={handleSubmit}
-            className={`space-y-6 bg-gray-900/30 backdrop-blur-md p-8 rounded-lg border border-white/10 fade-in-up ${
+            className={`space-y-6 ${isDark ? 'bg-gray-900/30 border-white/10' : 'bg-white/80 border-gray-200 shadow-xl'} backdrop-blur-md p-8 rounded-lg border fade-in-up ${
               formInView ? "is-visible" : ""
             }`}
             style={{ transitionDelay: "200ms" }}>
@@ -301,7 +303,7 @@ const Contact = () => {
                   name="name"
                   id="name"
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+                  className={`w-full px-4 py-3 ${isDark ? 'bg-gray-800/50 border-white/20 text-white' : 'bg-gray-100 border-gray-300 text-gray-900'} border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all`}
                 />
               </div>
               <div>
@@ -313,7 +315,7 @@ const Contact = () => {
                   name="email"
                   id="email"
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all"
+                  className={`w-full px-4 py-3 ${isDark ? 'bg-gray-800/50 border-white/20 text-white' : 'bg-gray-100 border-gray-300 text-gray-900'} border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all`}
                 />
               </div>
               <div>
@@ -325,7 +327,7 @@ const Contact = () => {
                   id="message"
                   rows="5"
                   required
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition-all resize-none"></textarea>
+                  className={`w-full px-4 py-3 ${isDark ? 'bg-gray-800/50 border-white/20 text-white' : 'bg-gray-100 border-gray-300 text-gray-900'} border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 transition-all resize-none`}></textarea>
               </div>
               <button
                 type="submit"
